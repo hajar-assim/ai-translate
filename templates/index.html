@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI translate</title>
+
+    <link rel= "shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
+
+    <!-- font package-->
+
+    <!--inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+
+    <!--signika negative -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- font package-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+    <body>
+        <h1>AI translate<img src="{{ url_for('static', filename='tricon.png') }}" class="icon" /></h1>
+        <p>
+            <form action="/" method="post">
+                <table class="td1">
+                    <tr>
+                        <td><label for="language"><h2>Language:</h2></label><input autocomplete="off" type="text" name="language" placeholder="Spanish" required/></td>
+                    
+                        <td rowspan="4"><div class="container2">
+                            <h2>History:</h2>
+                            {% for i in range(storedlength)%}
+                            <div class="container3">
+                            <table>
+                                <tr>
+                                    <td><h5>Language:</h5></td>
+                                    <td>{{stored[i]["Language:"]}}</td>
+                                </tr>
+                                <tr>
+                                    <td><h5>Sentence:</h5></td>
+                                    <td>{{stored[i]["Sentence:"]}}</td>
+                                </tr>
+                                <tr>
+                                    <td><h5>Translation:</h5></td>
+                                    <td>{{stored[i]["Translation:"]}}</td>
+                                </tr>
+                                </table>
+                            </div>
+                            <h6>...</h6>
+                        
+                                {% endfor %}   
+                        </div></td>
+                        
+                    </tr>
+
+                    <tr>
+                        <td><label for="sentence"><h2>Sentence:</h2></label><input type="text" autocomplete="off" name="sentence" placeholder="I love strawberries!" required><br></br></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="submit" value="translate"></td>
+                    </tr>
+
+                    <tr>
+                        <td>{{result}}</td>
+                    </tr>
+                
+                </table>
+            
+            </form>
+        </p>
+    </body>
+</head>
+</html>
