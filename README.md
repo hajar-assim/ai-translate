@@ -1,1 +1,2 @@
 # AI-translate
+Translator app
